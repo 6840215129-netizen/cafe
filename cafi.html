@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Paradise | สวรรค์ของคนรักกาแฟ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap');
+        body { font-family: 'Kanit', sans-serif; scroll-behavior: smooth; }
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .page-section { display: none; min-height: 80vh; }
+        .page-section.active { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800">
+
+    <!-- Navigation Menu -->
+    <nav class="bg-stone-900 text-white sticky top-0 z-50 shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2 cursor-pointer" onclick="showPage('home')">
+                    <i class="fas fa-coffee text-amber-500 text-2xl"></i>
+                    <span class="font-bold text-xl tracking-wider">COFFEE PARADISE</span>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="javascript:void(0)" onclick="showPage('home')" class="hover:text-amber-400 transition">หน้าแรก</a>
+                    <a href="javascript:void(0)" onclick="showPage('about')" class="hover:text-amber-400 transition">เกี่ยวกับเรา</a>
+                    <a href="javascript:void(0)" onclick="showPage('products')" class="hover:text-amber-400 transition">เมนูของเรา</a>
+                    <a href="javascript:void(0)" onclick="showPage('contact')" class="hover:text-amber-400 transition">ติดต่อเรา</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="menu-btn" class="focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden bg-stone-800 md:hidden pb-4 px-4 space-y-2">
+            <a href="javascript:void(0)" onclick="showPage('home')" class="block py-2">หน้าแรก</a>
+            <a href="javascript:void(0)" onclick="showPage('about')" class="block py-2">เกี่ยวกับเรา</a>
+            <a href="javascript:void(0)" onclick="showPage('products')" class="block py-2">เมนูของเรา</a>
+            <a href="javascript:void(0)" onclick="showPage('contact')" class="block py-2">ติดต่อเรา</a>
+        </div>
+    </nav>
+
+    <!-- Content Sections -->
+    <main>
+        
+        <!-- 1. HOME PAGE -->
+        <section id="home" class="page-section active">
+            <div class="hero-bg h-[70vh] flex items-center justify-center text-center text-white px-4">
+                <div>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4">สัมผัสรสชาติกาแฟแท้</h1>
+                    <p class="text-lg md:text-xl mb-8 font-light">คัดสรรเมล็ดกาแฟคุณภาพเยี่ยมเพื่อเช้าที่ดีที่สุดของคุณ</p>
+                    <button onclick="showPage('products')" class="bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 rounded-full font-semibold transition transform hover:scale-105">
+                        ดูเมนูทั้งหมด
+                    </button>
+                </div>
+            </div>
+            <div class="max-w-6xl mx-auto py-16 px-4">
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div class="p-6 bg-white rounded-xl shadow-sm border border-stone-100">
+                        <i class="fas fa-leaf text-4xl text-amber-600 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">ออร์แกนิค 100%</h3>
+                        <p class="text-stone-500">เมล็ดกาแฟจากแหล่งปลูกธรรมชาติ ไม่ใช้สารเคมี</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-xl shadow-sm border border-stone-100">
+                        <i class="fas fa-mug-hot text-4xl text-amber-600 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">คั่วสดใหม่ทุกวัน</h3>
+                        <p class="text-stone-500">รักษาความหอมและรสชาติที่เป็นเอกลักษณ์</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-xl shadow-sm border border-stone-100">
+                        <i class="fas fa-award text-4xl text-amber-600 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">บาริสต้ามืออาชีพ</h3>
+                        <p class="text-stone-500">ใส่ใจทุกรายละเอียดในทุกแก้วที่เสิร์ฟ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ABOUT PAGE -->
+        <section id="about" class="page-section bg-white">
+            <div class="max-w-6xl mx-auto py-20 px-4">
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2">
+                        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="ร้านกาแฟ" class="rounded-2xl shadow-2xl">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h2 class="text-3xl font-bold mb-6 border-l-4 border-amber-600 pl-4">เรื่องราวของ Coffee Paradise</h2>
+                        <p class="text-stone-600 mb-4 leading-relaxed">
+                            เราเริ่มต้นจากความหลงใหลในกลิ่นหอมของเมล็ดกาแฟที่เพิ่งคั่วใหม่ๆ จากโรงคั่วเล็กๆ หลังบ้าน สู่ร้านกาแฟที่ตั้งใจมอบบรรยากาศที่อบอุ่นเหมือนอยู่บ้านให้กับทุกคน
+                        </p>
+                        <p class="text-stone-600 mb-6 leading-relaxed">
+                            พันธกิจของเราคือการสนับสนุนเกษตรกรไทยและนำเสนอเมล็ดกาแฟ Specialty จากทั่วโลกให้คนไทยได้สัมผัสในราคาที่เข้าถึงได้
+                        </p>
+                        <ul class="space-y-2 text-stone-700 font-medium">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> ประสบการณ์มากกว่า 10 ปี</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> ได้รับรางวัลโรงคั่วยอดเยี่ยมปี 2023</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i> มีสาขารวม 5 สาขาทั่วกรุงเทพฯ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PRODUCTS (MENU) PAGE -->
+        <section id="products" class="page-section">
+            <div class="max-w-6xl mx-auto py-16 px-4">
+                <h2 class="text-3xl font-bold text-center mb-12 uppercase tracking-widest">Our Signature Menu</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Item 1 -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition group">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=500&q=80" alt="Espresso" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg mb-1">Double Espresso</h3>
+                            <p class="text-stone-500 text-sm mb-4">กาแฟสกัดเข้มข้น รสชาติหนักแน่น</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-amber-700 font-bold">฿65</span>
+                                <button class="bg-stone-800 text-white text-xs px-3 py-2 rounded hover:bg-stone-700">สั่งเลย</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition group">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=500&q=80" alt="Latte" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg mb-1">Caffe Latte</h3>
+                            <p class="text-stone-500 text-sm mb-4">กาแฟรสนุ่มผสมนมสดอุ่นๆ</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-amber-700 font-bold">฿85</span>
+                                <button class="bg-stone-800 text-white text-xs px-3 py-2 rounded hover:bg-stone-700">สั่งเลย</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition group">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1494314671902-399b18174975?auto=format&fit=crop&w=500&q=80" alt="Iced Americano" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg mb-1">Iced Americano</h3>
+                            <p class="text-stone-500 text-sm mb-4">ความสดชื่นที่เรียบง่ายและลงตัว</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-amber-700 font-bold">฿75</span>
+                                <button class="bg-stone-800 text-white text-xs px-3 py-2 rounded hover:bg-stone-700">สั่งเลย</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition group">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=500&q=80" alt="Caramel Macchiato" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg mb-1">Dirty Coffee</h3>
+                            <p class="text-stone-500 text-sm mb-4">นมเย็นจัดราดด้วยช็อตกาแฟเข้มข้น</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-amber-700 font-bold">฿95</span>
+                                <button class="bg-stone-800 text-white text-xs px-3 py-2 rounded hover:bg-stone-700">สั่งเลย</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. CONTACT PAGE -->
+        <section id="contact" class="page-section bg-stone-100">
+            <div class="max-w-4xl mx-auto py-16 px-4">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col md:flex-row">
+                    <div class="bg-stone-900 text-white p-10 md:w-2/5">
+                        <h3 class="text-2xl font-bold mb-6">ข้อมูลติดต่อ</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <i class="fas fa-map-marker-alt text-amber-500 mt-1"></i>
+                                <p>มหาวิทยาลัยนครราชสีมา อำเภอเมือง 30000</p>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <i class="fas fa-phone text-amber-500"></i>
+                                <p>061-096-4005</p>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <i class="fas fa-envelope text-amber-500"></i>
+                                <p>pakkaton2006@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="mt-12 flex gap-4 text-xl">
+                            <a href="#" class="hover:text-amber-500"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="hover:text-amber-500"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="hover:text-amber-500"><i class="fab fa-line"></i></a>
+                        </div>
+                    </div>
+                    <div class="p-10 md:w-3/5">
+                        <h3 class="text-2xl font-bold mb-6">ส่งข้อความถึงเรา</h3>
+                        <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">ชื่อของคุณ</label>
+                                <input type="text" required class="w-full border border-stone-200 rounded-lg p-2 focus:ring-2 focus:ring-amber-500 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">อีเมล</label>
+                                <input type="email" required class="w-full border border-stone-200 rounded-lg p-2 focus:ring-2 focus:ring-amber-500 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">ข้อความ</label>
+                                <textarea required rows="4" class="w-full border border-stone-200 rounded-lg p-2 focus:ring-2 focus:ring-amber-500 outline-none"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-amber-600 text-white py-3 rounded-lg font-bold hover:bg-amber-700 transition">ส่งข้อความ</button>
+                        </form>
+                        <div id="successMsg" class="hidden mt-4 p-4 bg-green-100 text-green-700 rounded-lg text-center">
+                            ขอบคุณที่ติดต่อเรา! เราจะตอบกลับโดยเร็วที่สุด
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-stone-400 py-8 text-center border-t border-stone-800">
+        <p>&copy; 2025 Coffee Paradise Project. สร้างด้วยความตั้งใจ</p>
+        <p class="text-xs mt-2 uppercase">HTML | CSS | Tailwind | JavaScript</p>
+    </footer>
+
+    <script>
+        // Page Navigation Logic
+        function showPage(pageId) {
+            // Hide all sections
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Show target section
+            document.getElementById(pageId).classList.add('active');
+            // Update URL hash (optional)
+            window.scrollTo(0, 0);
+            // Close mobile menu if open
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Form Submission Interaction
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('contactForm');
+            const msg = document.getElementById('successMsg');
+            
+            form.style.display = 'none';
+            msg.classList.remove('hidden');
+            
+            setTimeout(() => {
+                form.reset();
+                form.style.display = 'block';
+                msg.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
